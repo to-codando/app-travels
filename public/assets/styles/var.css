@@ -1,0 +1,45 @@
+:root {
+  --black-light: #505a59;
+  --black-power: #212c2e;
+  --black-soft: #263538;
+  --green-bluish-light: #dcf4f8;
+  --green-bright: #5ddabc;
+  --green-moss: #818b88;
+  --green-smooth: #76adad;
+  --green-soft: #cbf3e9;
+  --green-soft-light: #dbf4ee;
+  --green-super-light: #ccdbd7;
+  --light-grey: #eef4f3;
+  --red-soft: #ec7b7b;
+  --white: #ffffff;
+
+  --title-ui-color: #000;
+  --title-ui-font-size-primary: 3.6em;
+  --title-ui-font-weight-primary: 600;
+
+  --title-ui-font-size-secondary: 2.2em;
+  --title-ui-font-weight-secondary: 600;
+  --title-ui-line-height-secondary: 3em;
+
+  --title-ui-font-size-tertiary: 1.5em;
+  --title-ui-font-weight-tertiary: bold;
+
+  --button-ui-primary-hole-border-color: #8196ae;
+  --button-ui-primary-hole-background: transparent;
+  --button-ui-primary-hole-color: #000;
+
+  --button-ui-primary-border-color: #000;
+  --button-ui-primary-background: var(--button-ui-primary-border-color);
+  --button-ui-primary-color: #fff;
+
+  --fam-button-font-size: 1em;
+
+  --button-ui-secondary-border-color: #ff794c;
+  --button-ui-secondary-background: var(--button-ui-secondary-border-color);
+  --button-ui-secondary-color: #fff;
+
+  --card-ui-background: #fff;
+  --card-ui-color: #c6c6c8;
+
+  --card-ui-border-color: #e4e5e7;
+}
