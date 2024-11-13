@@ -1,94 +1,89 @@
-# O Projeto
+# The Project
 
-Esse projeto consiste em uma aplicação responsiva, com o que há de mais moderno em termos de tecnologia.
+This project consists of a responsive application, with the most modern technology.
 
-Esse projeto é baseado no padrão de renderização (SSR) que facilita a aplicação de SEO ao entregar ao browser apenas html simples. No entanto, ao carregar a página, o navegador ativa os recursos javascript que tornam a aplicação reativa favorecendo a melhor UX.
+This project is based on the standard rendering (SSR) that facilitates the application of SEO by delivering only simple HTML to the browser. However, when loading the page, the browser activates the javascript resources that make the application reactive, favoring the best UX.
 
+## Technologies used
 
-## Tecnologias utilizadas
-
-- Linguagens:
+- Languages:
 Typescript
 HTML
 CSS
 
-- Bibliotecas:
+- Libraries:
 IARES
-Fam-code-ui
-Chai
-Mocha
+IARES-UI
+Bun test
 Biome
 
-- Padrões e práticas:
+- Standards and practices:
 KISS
 YAGNI
-Components
 
-- Run time, compiladores e servidores:
+- Run time, packagers and servers:
 Esbuild
 Bun
 Elysia
 
+## General aspect of the project
 
-## Aspecto geral do projeto
+Below you will find information about the project structure, its folder structure and adopted architectures.
 
-Abaixo você encontra informações sobre a estrutura do projeto, sua estrutura de pastas e arquiteturas adotadas.
+### 2CA - Architecture for Organizing Components
 
-### 2CA - Arquitetura para Organizar Componentes
+2CA is the architecture adopted to define and combine components. This UI architecture promotes modularity, reusability, scalability and easy maintenance.
 
-A 2CA é a arquitetura adotada para definir e combinar componentes. Esta arquitetura de UI promove modularidade, reutilização, escalabilidade e fácil manutenção.
+### 2CA - Its Benefits
 
-### 2CA - Seus Benefícios
+2CA mainly uses the principles of Clean Component Architecture and Comprehensible Component Architecture to create complete, simple, easy to understand, scale and maintain components. Despite the emblematic names, 2CA is easy to apply and understand.
 
-A 2CA utiliza-se principalmente dos princípios da Clean Component Architecture e Comprehensible Component Architecture para criar componentes completos, simples, fáceis de entender, escalar e manter. Apesar dos nomes emblemáticos, a 2CA é fácil de aplicar e compreender.
+### 2CA - Folder Structure
 
-### 2CA - Estrutura de Pastas
+Below, the folder and file structure that governs the components within the 2CA architecture:
 
-Abaixo, a estrutura de pastas e arquivos que regem os componentes dentro da arquitetura 2CA:
+- **elements**: Self-contained components that do not depend on other components.
+- **blocks**: Components formed by the combination of other components.
+- **layouts**: Components that structure an interface pattern and that can be composed of elements and blocks.
+- **views**: Components that structure part of the user interface using one or more layouts.
+- **pages**: Components that group one or more views to form the complete user interface.
 
-- **elements**: Componentes autocontidos que não dependem de outros componentes.
-- **blocks**: Componentes formados pela combinação de outros componentes.
-- **layouts**: Componentes que estruturam um padrão de interface e que podem ser compostos por elements e blocks.
-- **views**: Componentes que estruturam parte da interface do usuário usando um ou mais layouts.
-- **pages**: Componentes que agrupam uma ou mais views para formar a interface completa do usuário.
+> The folder structure is defined in the `src/component/ui` directory.
 
-> A estrutura de pastas está definida no diretório `src/component/ui`.
-
-
-## Clonando o projeto
+## Cloning the project
 
 ```
 npx degit to-codando/iares-template-ssr new-app
 ```
 
-## Executando projeto
+## Running the project
 
-Instale o bun para executar o projeto posteriormente.
+Install bun to run the project later.
 
 ```
 curl -fsSL https://bun.sh/install | bash
 ```
 
-Instale as dependencias do projeto com comando abaixo:
+Install the project dependencies with the command below:
 
 ```
 bun -i
 ```
 
-Execução em modo de desenvolvimento:
+Running in development mode:
 ```
- bun dev
-```
-
-Execução em modo de produção:
-```
- bun start
+bun dev
 ```
 
-## Acessando a aplicação no browser
-Antes de acessar a aplicação através do browser, você precisa definir as variáveis de ambiente que definem através de qual protocolo, IP e porta a aplicação será servida no navegador.
+Running in production mode:
+```
+bun start
+```
 
-As variáveis de ambiente padrão, estão definidas no arquivo .env na raíz do projeto e você deve ajustar seus valores conforme suas necessidades.
+## Accessing the application in the browser
+Before accessing the application through the browser, you need to define the environment variables that define through which protocol, IP and port the application will be served in the browser.
+
+The default environment variables are defined in the .env file at the root of the project and you should adjust their values ​​according to your needs.
 
 ```
 PROTOCOL=http
@@ -96,11 +91,8 @@ HOST=127.0.0.1
 PORT=3000
 ENVIRONMENT=development
 ```
-## Certificado SSL/TLS
+## SSL/TLS Certificate
 
-Você pode utilizar o certificado padrão presente no diretório SSH do projeto para servir a aplicação usando HTTPS em modo de desenvolvimento. No entanto, não se esqueça dos cuidados necessários com a segurança quando versionando a aplicação com git e ao fazer deploy.
+You can use the default certificate present in the project's SSH directory to serve the application using HTTPS in development mode. However, do not forget to take the necessary security precautions when versioning the application with git and when deploying.
 
-Recomendo fortemente que para fins de segurança remova o diretório SSH e o arquivo .ENV do histórico de versionamento do git.
-
-
-
+I strongly recommend that for security purposes you remove the SSH directory and the .ENV file from the git versioning history.
