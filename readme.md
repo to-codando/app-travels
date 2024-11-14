@@ -6,29 +6,98 @@ This project is based on the standard rendering (SSR) that facilitates the appli
 
 ## Technologies used
 
-- Languages:
-Typescript
-HTML
-CSS
-
-- Libraries:
-IARES
-IARES-UI
-Bun test
-Biome
-
-- Standards and practices:
-KISS
-YAGNI
-
-- Run time, packagers and servers:
-Esbuild
-Bun
-Elysia
+- **Languages**: HTML, CSS, Typescript
+- **Standards and practices**: Hexagonal Archtecture, KISS, YAGNI, 2CA
+- **Core libraries**: IARES, IARES-UI
 
 ## General aspect of the project
 
 Below you will find information about the project structure, its folder structure and adopted architectures.
+
+### Project Structure
+
+```
+App/
+├── src/
+│   ├── app/
+│   │   ├── adapters/
+│   │   │   ├── AuthAdapter/
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── implementation.ts
+│   │   │   │   └── test.spec.ts
+│   │   │   └── OtherAdapter/
+│   │   │       ├── index.ts
+│   │   │       ├── implementation.ts
+│   │   │       └── test.spec.ts
+│   │   │
+│   │   ├── services/
+│   │   │   ├── user/
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test.spec.ts
+│   │   │   ├── other/
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test.spec.ts
+│   │   │   └── shared/
+│   │   │       └── AnySharedService/
+│   │   │           ├── index.ts
+│   │   │           └── test.spec.ts
+│   │   │
+│   │   ├── formatters/
+│   │   │   ├── user/
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test.spec.ts
+│   │   │   ├── other/
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test.spec.ts
+│   │   │   └── shared/
+│   │   │       └── AnySharedService/
+│   │   │           ├── index.ts
+│   │   │           └── test.spec.ts
+│   │   │
+│   │   └── validators/
+│   │       ├── email/
+│   │       │   ├── index.ts
+│   │       │   └── test.spec.ts
+│   │       └── other/
+│   │           ├── index.ts
+│   │           └── test.spec.ts
+│   │   
+│   ├── ui/
+│   │    ├── elements/          
+│   │    │   ├── Button/
+│   │    │   │   ├── Button.ts
+│   │    │   │   ├── Button.css 
+│   │    │   │   ├── state.ts
+│   │    │   │   ├── types.ts
+│   │    │   │   ├── actions.ts
+│   │    │   │   ├── hooks.ts
+│   │    │   │   └── tests.ts
+│   │    │   └── Other components...
+│   │    │
+│   │    ├── blocks/ (The same structure as the elements directory)            
+│   │    ├── sections/(The same structure as the elements directory)           
+│   │    ├── layouts/ (The same structure as the elements directory)           
+│   │    └── pages/ (The same structure as the elements directory)              
+│   │
+│   ├── store/
+│   │    ├── state.ts            
+│   │    ├── actions/         
+│   │    │  ├──index.ts
+│   │    │  └── test.spec.ts
+│   │    ├── types.ts
+│   │    └── index.ts            
+│   │     
+└── public/ 
+    └── assets/
+        ├── styles/
+        │   ├── reset.css
+        │    ├── globals.css
+        │    ├── var.css
+        │    ├── grid.css
+        │    └── main.css
+        └── images/
+            └── logo.png  # Exemplo
+```
 
 ### 2CA - Architecture for Organizing Components
 
@@ -42,11 +111,46 @@ Below you will find information about the project structure, its folder structur
 
 Below, the folder and file structure that governs the components within the 2CA architecture:
 
-- **elements**: Self-contained components that do not depend on other components.
-- **blocks**: Components formed by the combination of other components.
-- **layouts**: Components that structure an interface pattern and that can be composed of elements and blocks.
-- **views**: Components that structure part of the user interface using one or more layouts.
-- **pages**: Components that group one or more views to form the complete user interface.
+
+- **ui (User Interface)**
+  - **elements**: Basic and reusable components, such as buttons, inputs, and icons. These are the fundamental building blocks.
+  - **blocks**: Components composed by combining elements to form more functional components, like cards and lists.
+  - **sections**: Organize blocks into dedicated areas with specific goals, such as filters and product displays in a catalog. Each section defines a distinct functional area within a page.
+  - **layouts**: Structural templates that define the organization and arrangement of elements, blocks, and sections within the application's pages.
+  - **pages**: Complete structures that make up a page, combining sections to form full screens within the application. These often correspond to the application's routes.
+  - **themes**: Management of themes and global styles, including design variables like colors, typography, and spacing, applicable to all components.
+  
+  ## Component Cascade
+
+This is a basic explanation of how components can be organized in layers to compose visual interface structures.
+
+```raw
+Pages
+└── Layouts
+    ├── Sections
+    │   ├── Blocks
+    │   │   └── Elements
+    │   └── Blocks
+    │       └── Elements
+    └── Sections
+        ├── Blocks
+        │   └── Elements
+        └── Blocks
+            └── Elements
+```
+
+
+### Hierarchy:
+
+- **Elements**: These are the basic atomic components, such as buttons, inputs, etc. They form the foundation of all other components.
+
+- **Blocks**: They are sets of elements that create more complex components, like cards or forms.
+
+- **Sections**: These are groupings of blocks that serve a specific purpose, such as a product section or image gallery.
+
+- **Layouts**: Structures that define the organization and arrangement of sections in the interface. They manage the structure of an application, including headers, footers, and the overall content layout.
+
+- **Pages**: They use layouts to define the complete structure of a page, grouping different sections to form a cohesive screen that the user will see in the application.
 
 > The folder structure is defined in the `src/component/ui` directory.
 
