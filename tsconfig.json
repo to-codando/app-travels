@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "rootDir": "./",
-    "baseUrl": "./",
+    "rootDir": ".",
+    "baseUrl": "./src",
     "declarationDir": "./dist",
     "lib": ["ESNext", "DOM"],
     "jsx": "react-jsx",
+    "jsxImportSource": "@kitajs/html",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -30,20 +31,28 @@
     "sourceMap": true,
     "inlineSources": true,
     "paths": {
-      "@/assets/*": ["src/public/assets/*"],
-      "@/store": ["src/store/index.ts"],
-      "@/components*": ["src/components/index.ts"],
-      "@/ui": ["src/components/ui/index.ts"],
-      "@/layouts": ["src/layouts/index.ts"],
-      "@/pages": ["src/components/pages/index.ts"],
-      "@/utils/*": ["src/utils/*"],
-      "@/services*": ["src/services/*", "src/services/index.ts"],
-      "@/tests/*": ["src/tests/*"],
-      "@/mock/*": ["src/mock/*"]
+      "@/assets/*": ["frontend/public/assets/*"],
+      "@/store": ["frontend/store/index.ts"],
+
+      "@/ui/elements": ["frontend/ui/elements/index.ts"],
+      "@/ui/blocks": ["frontend/ui/blocks/index.ts"],
+      "@/ui/sections": ["frontend/ui/sections/index.ts"],
+      "@/ui/layouts": ["frontend/ui/layouts/index.ts", "../frontend/ui/layouts/index.ts"],
+      "@/ui/pages": ["frontend/ui/pages/index.ts", "../frontend/ui/pages/index.ts"],
+
+      "@/utils/*": ["frontend/utils/*"],
+      "@/app/adapters": ["frontend/adapters/index.ts"],
+      "@/app/useCases": ["frontend/useCases/index.ts"],
+      "@/app/services": ["frontend/services/index.ts"],
+      "@/app/formatters": ["frontend/formatters/index.ts"],
+      "@/app/validators": ["frontend/validators/index.ts"],
+
+      "@/tests/*": ["frontend/tests/*"],
+      "@/mock/*": ["frontend/mock/*"]
     }
   },
   "typeRoots": ["./node_modules/@types", "declarations.d.ts"],
-  "types": ["node", "mocha", "chai"],
+  "types": ["node"],
   "exclude": ["node_modules", "dist", "config", "public", "api", ".vscode"],
   "include": ["src/**/*", "declarations.d.ts"]
 }

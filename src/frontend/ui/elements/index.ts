@@ -1,0 +1,1 @@
+export { LogoApp } from "./LogoApp";

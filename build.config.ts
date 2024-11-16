@@ -17,7 +17,7 @@ const STATICS = process.env.IARES_UI_STATICS as string;
 const PROTOCOL = process.env.PROTOCOL;
 const PORT = process?.env?.PORT ? +process.env.PORT : 3000;
 const HOST = process?.env?.HOST ? process.env.HOST : "localhost";
-const SOURCES = await getFiles(["./src/**/*.{js,jsx,ts,tsx,mdx}"]);
+const SOURCES = await getFiles(["./src/frontend/**/*.{js,jsx,ts,tsx,mdx}"]);
 
 const TLS_KEY = process.env.TLS_KEY;
 const TLS_CERT = process.env.TLS_CERT;
@@ -57,7 +57,7 @@ const config: BuildOptions = {
       environment: process.env.NODE_ENV,
     }),
     EsbuildCopyStaticFiles({
-      src: resolve(__dirname, "./public"),
+      src: resolve(__dirname, "./static"),
       dest: resolve(__dirname, "./dist"),
       recursive: true,
     }),

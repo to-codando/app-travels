@@ -15,6 +15,9 @@ declare namespace NodeJS {
     PORT: string; // Embora PORT seja numérico na execução, ela vem como string do ambiente
     BUILD_VERSION: string;
     IARES_UI_STATICS: string;
+    TLS_KEY: string;
+    TLS_CERT: string;
+    CERT_PATH: string;
   }
 }
 
