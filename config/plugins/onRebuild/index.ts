@@ -1,6 +1,6 @@
 import http, { type IncomingMessage, type ServerResponse } from "node:http";
 import { join } from "node:path";
-import type { Plugin, PluginBuild } from "esbuild";
+import type { BuildResult, Plugin, PluginBuild } from "esbuild";
 
 export type BuildHandlerParams = {
   buildVersion: number;
@@ -73,8 +73,8 @@ export const onRebuild = (buildHandler?: BuildHandler): Plugin => ({
       buildVersion++;
     });
 
-    build.onEnd((result) => {
-      if (result.errors.length === 0) {
+    build.onEnd((result: BuildResult) => {
+      if (!result.errors.length) {
         const message = { type: "message", buildVersion };
         buildHandler?.({ buildVersion, build });
         return sendMessage(JSON.stringify(message));

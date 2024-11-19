@@ -1,5 +1,6 @@
 export { resolveEnvironment } from "./resolveEnvironment";
-export { tsAliasPathResolver } from "./tsAliasPathResolver";
+export { AliasResolver } from "./aliasResolver";
+export { ToCopy } from "./ToCopy";
 export {
   onRebuild,
   type BuildHandler,
